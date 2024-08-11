@@ -3,6 +3,7 @@
 import React from 'react';
 import Header from './components/Header/header';
 import Banner from './components/Banner/banner.tsx';
+import Forecast from './components/Forecast/forecast.tsx';
 import './App.css';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     <div className="App">
       <Header />
       <Banner />
+      <Forecast />
     </div>
   );
 }

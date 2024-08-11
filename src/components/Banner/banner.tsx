@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import type { RootState } from '../../store.ts';
+import { useSelector, useDispatch } from 'react-redux';
+import { setSearchValue } from '../../feature/search/searchSlice.ts';
+
 import axios from 'axios';
 import './banner.css';
 import Weather from '../../dtos/Weather.dto.ts'; // Import the Weather DTO
@@ -6,11 +10,14 @@ import Loader from '../Loader/loader.js';
 
 const Banner: React.FC = () => {
   const [weatherData, setWeatherData] = useState<Weather | null>(null); // Type the state with Weather DTO
-  const [search, setSearch] = useState('');
+  const search = useSelector((state: RootState) => state.search);
+  const [searchVal, setSearchVal] = useState('Cottbus');
   const [loader, setLoader] = useState(true);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetchWeatherData();
+    console.log(search);
   }, []);
 
   const fetchWeatherData = async () => {
@@ -19,7 +26,7 @@ const Banner: React.FC = () => {
         .get('http://api.weatherapi.com/v1/current.json', {
           params: {
             key: '2025fdc48207436a94a14135241008',
-            q: search.length ? search : 'Cottbus',
+            q: searchVal,
           },
         })
         .then((res) => {
@@ -34,16 +41,18 @@ const Banner: React.FC = () => {
   };
 
   const handleSearch = (event) => {
-    setSearch(event.target.value);
+    setSearchVal(event.target.value);
     console.log(search);
   };
 
   const submit = () => {
+    dispatch(setSearchValue(searchVal));
     fetchWeatherData();
   };
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
+      dispatch(setSearchValue(searchVal));
       fetchWeatherData();
     }
   };
