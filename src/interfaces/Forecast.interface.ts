@@ -1,4 +1,4 @@
-import Condition from './Condition.dto';
+import Condition from './Condition.interface';
 
 export interface IForecastDay {
   date: string;

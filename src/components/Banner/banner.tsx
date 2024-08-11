@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import type { RootState } from '../../store.ts';
 import { useSelector, useDispatch } from 'react-redux';
 import { setSearchValue } from '../../feature/search/searchSlice.ts';
-
 import axios from 'axios';
 import './banner.css';
-import Weather from '../../dtos/Weather.dto.ts'; // Import the Weather DTO
+import Weather from '../../interfaces/Weather.interface.ts'; // Import the Weather DTO
 import Loader from '../Loader/loader.js';
 
 const Banner: React.FC = () => {
@@ -26,7 +25,7 @@ const Banner: React.FC = () => {
         .get('http://api.weatherapi.com/v1/current.json', {
           params: {
             key: '2025fdc48207436a94a14135241008',
-            q: searchVal,
+            q: searchVal.length ? searchVal : 'Cottbus',
           },
         })
         .then((res) => {
@@ -40,7 +39,7 @@ const Banner: React.FC = () => {
     }
   };
 
-  const handleSearch = (event) => {
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchVal(event.target.value);
     console.log(search);
   };
@@ -50,7 +49,7 @@ const Banner: React.FC = () => {
     fetchWeatherData();
   };
 
-  const handleKeyDown = (event) => {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       dispatch(setSearchValue(searchVal));
       fetchWeatherData();
@@ -65,81 +64,73 @@ const Banner: React.FC = () => {
   return (
     <section className="banner text-light d-flex">
       <div className="container d-flex flex-column flex-md-row justify-content-between align-items-center py-5">
-        <div className="row">
-          <div className="col-8">
-            <div className="banner-text">
-              <h1 className="display-4 fw-bold">Lorem ipsum dolor sit amet</h1>
-              <p className="lead">consetetur sadipscing elitr.</p>
-            </div>
-          </div>
-          <div className="col-4">
-            <div className="banner-image">
-              <div className="card">
-                <div className="row">
-                  <div className="col-9">
-                    <div className="form-group">
-                      <input
-                        onChange={handleSearch}
-                        onKeyDown={handleKeyDown}
-                        type="email"
-                        className="form-control mb-2"
-                        id="exampleInputEmail1"
-                        aria-describedby="emailHelp"
-                        placeholder="Search city"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-3">
-                    <button onClick={submit} className="btn btn-primary">
-                      Search
-                    </button>
-                  </div>
+        <div className="banner-text">
+          <h1 className="display-4 fw-bold">Weather Wisdom for Every Day</h1>
+          <p className="lead">Forecast, Every Day.</p>
+        </div>
+        <div className="banner-image">
+          <div className="card">
+            <div className="row">
+              <div className="col-9">
+                <div className="form-group">
+                  <input
+                    onChange={handleSearch}
+                    onKeyDown={handleKeyDown}
+                    type="text"
+                    className="form-control mb-2"
+                    placeholder="Search city"
+                  />
                 </div>
-                {loader ? ( // Conditionally render based on loader state
-                  <Loader show={loader} />
-                ) : (
-                  <>
-                    <div className="location">{location.name}</div>
-                    <div className="dateTime">
-                      {new Date(location.localtime).toLocaleString('en-US', {
-                        weekday: 'short',
-                        hour: '2-digit',
-                        minute: '2-digit',
-                      })}
-                      , {current.condition.text}
-                    </div>
-                    <div className="weatherInfo">
-                      <div className="temperature">
-                        {Math.round(current.temp_c)}°C
-                      </div>
-                      <img
-                        src={`http:${current.condition.icon}`}
-                        alt={current.condition.text}
-                        className="icon"
-                      />
-                    </div>
-                    <div className="extraInfo">
-                      <div className="detail">
-                        <img
-                          src="/assets/precipitation.svg"
-                          alt="precipitation"
-                          className="detailIcon"
-                        />
-                        <div>{current.precip_mm}% Precipitation</div>
-                      </div>
-                      <div className="detail">
-                        <img
-                          src="/assets/wind.svg"
-                          alt="wind"
-                          className="detailIcon"
-                        />
-                        <div>{current.wind_kph} km/h Winds</div>
-                      </div>
-                    </div>
-                  </>
-                )}
+              </div>
+              <div className="col-3">
+                <button onClick={submit} className="btn btn-primary">
+                  Search
+                </button>
               </div>
             </div>
+            {loader ? (
+              <Loader show={loader} />
+            ) : (
+              <>
+                <div className="location">{location.name}</div>
+                <div className="dateTime">
+                  {new Date(location.localtime).toLocaleString('en-US', {
+                    weekday: 'short',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                  })}
+                  , {current.condition.text}
+                </div>
+                <div className="weatherInfo">
+                  <div className="temperature">
+                    {Math.round(current.temp_c)}°C
+                  </div>
+                  <img
+                    src={`http:${current.condition.icon}`}
+                    alt={current.condition.text}
+                    className="icon"
+                  />
+                </div>
+                <div className="extraInfo">
+                  <div className="detail">
+                    <img
+                      src="/assets/precipitation.svg"
+                      alt="precipitation"
+                      className="detailIcon"
+                    />
+                    <div>{current.precip_mm}% Precipitation</div>
+                  </div>
+                  <div className="detail">
+                    <img
+                      src="/assets/wind.svg"
+                      alt="wind"
+                      className="detailIcon"
+                    />
+                    <div>{current.wind_kph} km/h Winds</div>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

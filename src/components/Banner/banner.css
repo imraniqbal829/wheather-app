@@ -79,3 +79,79 @@
   height: 24px;
   margin-bottom: 5px;
 }
+
+/* responsive */
+
+/* .banner .container {
+  padding: 0 15px;
+}
+
+.banner-text {
+  text-align: center;
+}
+
+.banner-image .card {
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.banner-image .form-group input {
+  width: 100%;
+}
+
+.banner-image .btn {
+  width: 100%;
+} */
+
+/* Responsive Layout */
+/* @media (max-width: 767px) {
+  .banner .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .banner-text {
+    margin-bottom: 20px;
+  }
+
+  .banner-image {
+    margin-top: 20px;
+  }
+
+  .banner-image .row {
+    flex-direction: column;
+  }
+
+  .banner-image .col-9,
+  .banner-image .col-3 {
+    width: 100%;
+  }
+
+  .banner-image .col-3 {
+    margin-top: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .banner {
+    padding: 40px 0;
+  }
+
+  .banner .container {
+    flex-direction: row;
+  }
+
+  .banner-text,
+  .banner-image {
+    flex: 1;
+  }
+
+  .banner-image .row {
+    align-items: center;
+  }
+
+  .banner-image .col-3 {
+    display: flex;
+    justify-content: flex-end;
+  }
+} */

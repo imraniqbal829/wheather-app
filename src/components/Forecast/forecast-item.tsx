@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './forecast-item.css';
-import { IForecastDay } from '../../dtos/Forecast.dto.ts';
+import { IForecastDay } from '../../interfaces/Forecast.interface.ts';
 
 interface ForecastItemProps {
   forecast: IForecastDay;
@@ -17,7 +17,7 @@ const ForecastItem: React.FC<ForecastItemProps> = ({ forecast }) => {
             //hour: '2-digit',
             //minute: '2-digit',
           })}
-          , {forecast.day.condition.text}
+          <br /> {forecast.day.condition.text}
         </div>
         <div className="row d-flex justify-content-center">
           <img

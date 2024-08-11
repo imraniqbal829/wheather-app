@@ -1,4 +1,4 @@
-class Location {
+interface Location {
   location: string;
   localtime: Date;
   name: string;

@@ -1,4 +1,4 @@
-class Condition {
+interface Condition {
   text: string;
   icon: string;
 }

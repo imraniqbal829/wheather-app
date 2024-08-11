@@ -1,6 +1,6 @@
-import Condition from './Condition.dto';
+import Condition from './Condition.interface';
 
-class Current {
+interface Current {
   temp_c: number;
   wind_kph: number;
   precip_mm: number;

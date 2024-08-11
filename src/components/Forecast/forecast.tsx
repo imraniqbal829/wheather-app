@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import type { RootState } from '../../store.ts';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
-import { IForecast } from '../../dtos/Forecast.dto.ts';
+import { IForecast } from '../../interfaces/Forecast.interface.ts';
 import ForecastItem from './forecast-item.tsx';
 import './forecast.css';
 
@@ -23,7 +23,7 @@ const Forecast: React.FC = () => {
           params: {
             key: '2025fdc48207436a94a14135241008',
             q: search.length ? search : 'Cottbus',
-            days: 10,
+            days: 5,
           },
         }
       );
@@ -41,7 +41,7 @@ const Forecast: React.FC = () => {
   return (
     <section className="forecast-section">
       <div className="container">
-        <h1 className="display-4 fw-bold text-white">Forecasts</h1>
+        <h1 className="display-4 fw-bold text-white">5 Days Forecast</h1>
         <div className="row">
           {forecastItems.map((forecast, index) => (
             <div key={index} className="col-md-2 m-2">

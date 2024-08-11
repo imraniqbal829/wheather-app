@@ -9,7 +9,7 @@ const Header = () => {
         <div className="logo d-flex align-items-center">
           <span className="fs-3 fw-bold">WheaterToday.</span>
         </div>
-        <nav>
+        {/* <nav>
           <ul className="nav">
             <li className="nav-item">
               <a href="#!" className="nav-link text-white">Lorem</a>
@@ -21,10 +21,10 @@ const Header = () => {
               <a href="#!" className="nav-link text-white">Dolor</a>
             </li>
           </ul>
-        </nav>
+        </nav> */}
       </div>
     </header>
   );
-}
+};
 
 export default Header;
