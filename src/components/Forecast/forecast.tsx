@@ -35,7 +35,6 @@ const Forecast: React.FC = () => {
     }
   };
 
-  const itemsToShow = 5; // Number of items to display in the grid
   const forecastItems = forecasts?.forecastday || [];
 
   return (

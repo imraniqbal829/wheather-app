@@ -9,19 +9,6 @@ const Header = () => {
         <div className="logo d-flex align-items-center">
           <span className="fs-3 fw-bold">WheaterToday.</span>
         </div>
-        {/* <nav>
-          <ul className="nav">
-            <li className="nav-item">
-              <a href="#!" className="nav-link text-white">Lorem</a>
-            </li>
-            <li className="nav-item">
-              <a href="#!" className="nav-link text-white">Ipsum</a>
-            </li>
-            <li className="nav-item">
-              <a href="#!" className="nav-link text-white">Dolor</a>
-            </li>
-          </ul>
-        </nav> */}
       </div>
     </header>
   );

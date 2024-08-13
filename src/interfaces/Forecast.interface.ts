@@ -1,11 +1,11 @@
-import Condition from './Condition.interface';
+import ICondition from './Condition.interface';
 
 export interface IForecastDay {
   date: string;
   day: {
     maxtemp_c: number;
     mintemp_c: number;
-    condition: Condition;
+    condition: ICondition;
   };
 }
 

@@ -4,11 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setSearchValue } from '../../feature/search/searchSlice.ts';
 import axios from 'axios';
 import './banner.css';
-import Weather from '../../interfaces/Weather.interface.ts'; // Import the Weather DTO
+import IWeather from '../../interfaces/Weather.interface.ts'; // Import the Weather DTO
 import Loader from '../Loader/loader.js';
 
 const Banner: React.FC = () => {
-  const [weatherData, setWeatherData] = useState<Weather | null>(null); // Type the state with Weather DTO
+  const [weatherData, setWeatherData] = useState<IWeather | null>(null); // Type the state with Weather DTO
   const search = useSelector((state: RootState) => state.search);
   const [searchVal, setSearchVal] = useState('Cottbus');
   const [loader, setLoader] = useState(true);

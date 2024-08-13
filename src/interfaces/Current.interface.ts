@@ -1,10 +1,10 @@
-import Condition from './Condition.interface';
+import ICondition from './Condition.interface';
 
-interface Current {
+interface ICurrent {
   temp_c: number;
   wind_kph: number;
   precip_mm: number;
-  condition: Condition;
+  condition: ICondition;
 }
 
-export default Current;
+export default ICurrent;

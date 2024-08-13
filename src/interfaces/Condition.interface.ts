@@ -1,6 +1,6 @@
-interface Condition {
+interface ICondition {
   text: string;
   icon: string;
 }
 
-export default Condition;
+export default ICondition;

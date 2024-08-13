@@ -1,7 +1,7 @@
-interface Location {
+interface ILocation {
   location: string;
   localtime: Date;
   name: string;
 }
 
-export default Location;
+export default ILocation;

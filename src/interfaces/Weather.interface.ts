@@ -1,9 +1,9 @@
-import Current from './Current.interface';
-import Location from './Location.interface';
+import ICurrent from './Current.interface';
+import ILocation from './Location.interface';
 
-interface Weather {
-  current: Current;
-  location: Location;
+interface IWeather {
+  current: ICurrent;
+  location: ILocation;
 }
 
-export default Weather;
+export default IWeather;
